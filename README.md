@@ -10,15 +10,15 @@ adjust the server quality settings the more taxing the process will be on your p
 
 1. *Recommended Hardware*
      1. *Intel i5/i7 CPU - Haswell Gen or newer...*
-     1. *AMD Ryzen 5/7/9 - Zen or newer...*
-     1. *Ethernet Connection(SSH)*
-     1. *8GB RAM*
-     1. *Basic GPU output*
+     2. *AMD Ryzen 5/7/9 - Zen or newer...*
+     3. *Ethernet Connection(SSH)*
+     4. *8GB RAM*
+     5. *Basic GPU output*
 
 2. *Software*
-     2. *Linux OS*
+     1. *Linux OS*
      2. *Nginx + RTMP Module Installed*
-     2. *GCC*
+     3. *GCC*
 
 # Installation Guide
 
