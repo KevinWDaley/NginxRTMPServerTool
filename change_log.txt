@@ -1,0 +1,9 @@
+Change log: 4/22/2020
+     +Added old C++ code to source for restructuring.
+     +Added Twitch ingest server JSON file.
+     +Updated README file.
+     +Created Changelog file(previously recorded in README).
+
+Change log: 4/20/2020
+     +Created file system for git repository.
+     +Source code not added.
