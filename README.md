@@ -14,6 +14,7 @@ adjust the server quality settings the more taxing the process will be on your p
      1. *Ethernet Connection(SSH)*
      1. *8GB RAM*
      1. *Basic GPU output*
+
 2. *Software*
      2. *Linux OS*
      2. *Nginx + RTMP Module Installed*
