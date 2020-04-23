@@ -2,17 +2,22 @@
 
 # System Requirements
 
-*Hardware*
+**Hardware & Software**
 
 Any 'performance' PC running a Linux based OS will with an Ethernet connection is sufficient enough.
 Running a RTMP server with high settings will be demanding on the best of processors. The further you
 adjust the server quality settings the more taxing the process will be on your processor.
 
-1. **Recommended Hardware**
-     1. **Intel i5/i7 CPU - Haswell Gen or newer...**
-     1. **AMD Ryzen 5/7/9 - Zen or newer...**
-
-
+1. *Recommended Hardware*
+     1. *Intel i5/i7 CPU - Haswell Gen or newer...*
+     1. *AMD Ryzen 5/7/9 - Zen or newer...*
+     1. *Ethernet Connection(SSH)*
+     1. *8GB RAM*
+     1. *Basic GPU output*
+2. *Software*
+     2. *Linux OS*
+     2. *Nginx + RTMP Module Installed*
+     2. *GCC*
 
 # Installation Guide
 

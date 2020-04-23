@@ -12,6 +12,9 @@
 #include <vector>
 #include <regex>
 
+//My header files for functions...
+#include "nginx-process-id.h"
+
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
 #define CTRLD 	4
 
@@ -49,7 +52,6 @@ const char *choices[] = {
                   };
 
 bool currentOption(  const char* input, WINDOW *my_menu_win, MENU *my_menu );
-bool nginxPID();
 void set_IP_Address();
 void draw_menu(  WINDOW *my_menu_win, MENU *my_menu);
 void print_in_middle(WINDOW *win, int starty, int startx, int width, const char *string, chtype color);
@@ -333,13 +335,6 @@ bool currentOption( const char* input, WINDOW *my_menu_win, MENU *my_menu )
 		return false;
 	}
 	return true;
-}
-
-bool nginxPID()
-{
-	ifstream conf;
-	conf.open( "/usr/local/nginx/logs/nginx.pid" );
-	return conf.is_open();
 }
 
 void checkProcess(WINDOW *my_menu_win)
@@ -736,7 +731,7 @@ void set_IP_Address()
 		}
 	}
 
-    regex ipAddress_style( "\/[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\/" );
+    regex ipAddress_style( "\\/[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\/" );
     avconv = regex_replace( avconv, ipAddress_style, temp );
     tempfile[avconvLocation-1] = avconv;
 
@@ -1425,6 +1420,8 @@ string get_ingest_server( string choice, string streamService  )
             return twitchServers[25];
         }
     }
+
+   return "No Server Selected";
 }
 
 string get_streamKey( string str )
