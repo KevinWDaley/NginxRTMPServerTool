@@ -1425,6 +1425,7 @@ string get_ingest_server( string choice, string streamService  )
             return twitchServers[25];
         }
     }
+    return twitchServers[25];
 }
 
 string get_streamKey( string str )
