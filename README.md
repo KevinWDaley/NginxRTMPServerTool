@@ -27,4 +27,3 @@ Coming Soon...
 - [ ] Finish writing System Requirements.
 - [ ] Finish writing Install Guide.
 - [ ] Restructure C++ Code.
-- [x] Test To-Do
