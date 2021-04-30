@@ -736,7 +736,7 @@ void set_IP_Address()
 		}
 	}
 
-    regex ipAddress_style( "\/[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\/" );
+    regex ipAddress_style( "\\/[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\.[[:digit:]]{1,3}\\/" );
     avconv = regex_replace( avconv, ipAddress_style, temp );
     tempfile[avconvLocation-1] = avconv;
 
