@@ -4,7 +4,7 @@
 
 **Hardware & Software**
 
-Any 'performance' PC running a Linux based OS will with an Ethernet connection is sufficient enough.
+Any 'performance' PC running a Linux based OS with an Ethernet connection is sufficient enough.
 Running a RTMP server with high settings will be demanding on the best of processors. The further you
 adjust the server quality settings the more taxing the process will be on your processor.
 
