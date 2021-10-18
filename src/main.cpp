@@ -274,7 +274,7 @@ bool currentOption( const char* input, WINDOW *my_menu_win, MENU *my_menu )
 	{
 		if( nginxPID() == false )
 		{
-			system( "./nginx" );
+			system( "/usr/local/nginx/sbin/./nginx" );
 			mvwprintw( my_menu_win, 3, 17, " ON                 " );
 		}
 	}
