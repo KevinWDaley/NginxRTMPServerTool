@@ -77,7 +77,7 @@ int main()
     MENU *my_menu;
     WINDOW *my_menu_win;
     int n_choices, i;
-	bool loop = true;
+    bool loop = true;
     ip_Address = get_IP_Address();
 
 	/* Initialize curses */
