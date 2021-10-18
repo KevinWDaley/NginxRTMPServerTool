@@ -3,7 +3,7 @@
 
 bool nginxPID()
 {
-     std::ifstream conf;
+  std::ifstream conf;
 	conf.open( "/usr/local/nginx/logs/nginx.pid" );
 	return conf.is_open();
 }
