@@ -1,8 +1,8 @@
 #include "nginx-ip-address.h"
 #include <fstream>
-#include <string>
+#include <string.h>
 
-std::string getIpAddress()
+string getIpAddress()
 {
     char buffer[15] = {'\0'};
     char ipAddress[15] = {'\0'};
