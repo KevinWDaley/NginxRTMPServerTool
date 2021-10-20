@@ -1,4 +1,4 @@
-#include "/home/ireul/GitHub/NginxRTMPServerTool/src/nginx-process-id.h"
+#include "/home/ireul/Github/NginxRTMPServerTool/src/nginx-process-id.h"
 
 int main(int argc, char const *argv[]) {
   /* code */
