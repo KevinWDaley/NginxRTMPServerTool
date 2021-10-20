@@ -14,20 +14,10 @@ string getIpAddress()
     if (!pipe) throw std::runtime_error("popen() failed!");
 
     int i = 0;
-  while (!feof(pipe.get()))
-  {
-      buffer[i++] = fgetc(pipe.get());
-  }
-  //buffer[14] = '+';
+    while (!feof(pipe.get()))
+    {
+        ipAddress[i] = fgetc(pipe.get());
+    }
 
-  for( int i = 0; i < 15; i++)
-  {
-      if( buffer[i] == '1' || buffer[i] == '2' || buffer[i] == '3' || buffer[i] == '4' || buffer[i] == '5' || buffer[i] == '6' || buffer[i] == '7' || buffer[i] == '8' || buffer[i] == '9' || buffer[i] == '.' )
-      {
-          ipAddress[i] = buffer[i];
-      }
-
-  }
-
-  return ipAddress;
+    return ipAddress;
 }
