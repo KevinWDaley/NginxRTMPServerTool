@@ -8,16 +8,19 @@ using std::string;
 
 string getIpAddress()
 {
-    char buffer[15] = {'\0'};
-    char ipAddress[15] = {'\0'};
-    std::shared_ptr<FILE> pipe(popen("hostname -I","r"), pclose);
+    char buffer[15];
+    string ipAddress = "";
+    FILE* pipe = popen("hostname -I","r");
     if (!pipe) throw std::runtime_error("popen() failed!");
 
-    int i = 0;
-    while (!feof(pipe.get()))
+    while (!feof(pipe))
     {
-        ipAddress[i] = fgetc(pipe.get());
+        if ( fgets(buffer, 15, pipe) != NULL )
+        {
+          ipAddress +=buffer;
+        }
     }
 
+    pclose(pipe);
     return ipAddress;
 }
