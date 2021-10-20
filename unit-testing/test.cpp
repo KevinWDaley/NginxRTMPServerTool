@@ -1,10 +1,17 @@
 #include <iostream>
 #include "/home/ireul/Github/NginxRTMPServerTool/src/nginx-process-id.h"
+#include "/home/ireul/Github/NginxRTMPServerTool/src/nginx-ip-address.h"
 
 int main(int argc, char const *argv[]) {
   /* code */
-
-  std::cout << "Fucntion nginxPID:" << "\"" << nginxPID() << "\"" << '\n';
+  std::std::cout << "UNIT TESTING" << '\n';
+  std::cout << "Function nginxPID:" << "\"" << nginxPID() << "\"" << '\n';
+  std::cout << "Function :" << "\"" << getIpAddress() << "\"" << '\n';
+  std::cout << "Function :" << "\"" << "" << "\"" << '\n';
+  std::cout << "Function :" << "\"" << "" << "\"" << '\n';
+  std::cout << "Function :" << "\"" << "" << "\"" << '\n';
+  std::cout << "Function :" << "\"" << "" << "\"" << '\n';
+  std::cout << "Function :" << "\"" << "" << "\"" << '\n';
 
   return 0;
 }

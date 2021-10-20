@@ -1,6 +1,6 @@
-#ifndef NGINX_PROCESS_ID_H
-#define NGINX_PROCESS_ID_H
+#ifndef NGINX_IP_ADDRESS_H
+#define NGINX_IP_ADDRESS_H
 
-bool nginxPID();
+string getIpAddress();
 
 #endif

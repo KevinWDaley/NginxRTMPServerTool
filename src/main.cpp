@@ -67,7 +67,7 @@ float get_network_usage_transmit();
 float get_network_usage_receive();
 float get_memory_usage();
 string get_PID_ngnix();
-string get_IP_Address();
+string getIpAddress();
 string get_ingest_server( string choice, string streamService );
 string get_streamKey( string str );
 
@@ -79,7 +79,7 @@ int main()
     WINDOW *my_menu_win;
     int n_choices, i;
     bool loop = true;
-    ip_Address = get_IP_Address();
+    ip_Address = getIpAddress();
 
 	/* Initialize curses */
 	initscr();
@@ -161,7 +161,7 @@ int main()
 	exit( EXIT_SUCCESS );
 }
 
-string get_IP_Address()
+string getIpAddress()
 {
     char buffer[15] = {'\0'};
     char ipAddress[15] = {'\0'};
