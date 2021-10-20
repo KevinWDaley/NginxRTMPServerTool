@@ -14,6 +14,7 @@
 
 //My header files for functions...
 #include "nginx-process-id.h"
+#include "ngnix-ip-address.h"
 
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
 #define CTRLD 	4
@@ -183,6 +184,8 @@ string get_IP_Address()
       }
 
   }
+
+
   return ipAddress;
 }
 
@@ -283,7 +286,7 @@ bool currentOption( const char* input, WINDOW *my_menu_win, MENU *my_menu )
 
 		if( nginxPID() == true )
 		{
-			system( "./nginx -s stop" );
+			system( "/usr/local/nginx/sbin/./nginx -s stop" );
 			mvwprintw( my_menu_win, 3, 17, " OFF                " );
 		}
 
