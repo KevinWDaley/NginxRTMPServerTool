@@ -5,7 +5,6 @@ string getIpAddress()
 {
     char buffer[15] = {'\0'};
     char ipAddress[15] = {'\0'};
-    string temp = "";
     shared_ptr<FILE> pipe(popen("hostname -I","r"), pclose);
     if (!pipe) throw runtime_error("popen() failed!");
 
