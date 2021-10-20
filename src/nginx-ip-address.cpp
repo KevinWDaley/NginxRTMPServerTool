@@ -2,8 +2,11 @@
 #include <iostream>
 #include <fstream>
 #include <string>
++#include <memory>
 
-std::string getIpAddress()
+using std::string;
+
+string getIpAddress()
 {
     char buffer[15] = {'\0'};
     char ipAddress[15] = {'\0'};
