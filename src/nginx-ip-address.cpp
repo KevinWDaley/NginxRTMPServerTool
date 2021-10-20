@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 
-string getIpAddress()
+std::string getIpAddress()
 {
     char buffer[15] = {'\0'};
     char ipAddress[15] = {'\0'};
