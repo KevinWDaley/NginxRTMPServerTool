@@ -4,10 +4,10 @@
 
 int main(int argc, char const *argv[]) {
   /* code */
-  
+
   std::cout << "UNIT TESTING" << '\n';
-  std::cout << "Function nginxPID:" << "\"" << nginxPID() << "\"" << '\n';
-  std::cout << "Function getIpAddress:" << "\"" << getIpAddress() << "\"" << '\n';
+  std::cout << "Function nginxPID: " << "\"" << nginxPID() << "\"" << '\n';
+  std::cout << "Function getIpAddress: " << "\"" << getIpAddress() << "\"" << '\n';
   std::cout << "Function :" << "\"" << "" << "\"" << '\n';
   std::cout << "Function :" << "\"" << "" << "\"" << '\n';
   std::cout << "Function :" << "\"" << "" << "\"" << '\n';
