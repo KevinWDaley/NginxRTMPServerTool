@@ -4,7 +4,7 @@
 
 int main(int argc, char const *argv[]) {
   /* code */
-  std::std::cout << "UNIT TESTING" << '\n';
+  std::cout << "UNIT TESTING" << '\n';
   std::cout << "Function nginxPID:" << "\"" << nginxPID() << "\"" << '\n';
   std::cout << "Function :" << "\"" << getIpAddress() << "\"" << '\n';
   std::cout << "Function :" << "\"" << "" << "\"" << '\n';

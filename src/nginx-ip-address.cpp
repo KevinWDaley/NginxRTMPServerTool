@@ -1,5 +1,6 @@
 #include "nginx-ip-address.h"
 #include <fstream>
+#include <string>
 
 string getIpAddress()
 {
