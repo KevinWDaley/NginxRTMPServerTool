@@ -1,12 +1,13 @@
 #include "nginx-ip-address.h"
+#include <iostream>
 #include <fstream>
-#include <string.h>
+#include <string>
 
 std::string getIpAddress()
 {
     char buffer[15] = {'\0'};
     char ipAddress[15] = {'\0'};
-    shared_ptr<FILE> pipe(popen("hostname -I","r"), pclose);
+    std::shared_ptr<FILE> pipe(popen("hostname -I","r"), pclose);
     if (!pipe) throw runtime_error("popen() failed!");
 
     int i = 0;
