@@ -1,6 +1,7 @@
 #include <iostream>
 #include "/home/ireul/Github/NginxRTMPServerTool/src/nginx-process-id.h"
 #include "/home/ireul/Github/NginxRTMPServerTool/src/nginx-ip-address.h"
+#include "/home/ireul/Github/NginxRTMPServerTool/src/ngnix-memory.h"
 
 int main(int argc, char const *argv[]) {
   /* code */
@@ -8,7 +9,7 @@ int main(int argc, char const *argv[]) {
   std::cout << "UNIT TESTING" << '\n';
   std::cout << "Function nginxPID: " << "\"" << nginxPID() << "\"" << '\n';
   std::cout << "Function getIpAddress: " << "\"" << getIpAddress() << "\"" << '\n';
-  std::cout << "Function :" << "\"" << "" << "\"" << '\n';
+  std::cout << "Function memoryUsage: " << "\"" << memoryUsage() << "\"" << '\n';
   std::cout << "Function :" << "\"" << "" << "\"" << '\n';
   std::cout << "Function :" << "\"" << "" << "\"" << '\n';
   std::cout << "Function :" << "\"" << "" << "\"" << '\n';
