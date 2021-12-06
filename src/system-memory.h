@@ -1,13 +1,11 @@
-#ifndef NGINX_MEMORY_H
-#define NGINX_MEMORY_H
+#ifndef SYSTEM_MEMORY_H
+#define SYSTEM_MEMORY_H
 
 #include <vector>
 #include <fstream>
 #include <string>
 #include <sstream>
 
-
-
-float memoryUsage();
+float MemoryUsage();
 
 #endif

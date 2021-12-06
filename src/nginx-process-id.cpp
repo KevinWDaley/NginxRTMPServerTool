@@ -1,7 +1,7 @@
 #include "nginx-process-id.h"
 #include <fstream>
 
-bool nginxPID()
+bool NginxPid()
 {
   std::ifstream conf;
 	conf.open( "/usr/local/nginx/logs/nginx.pid" );

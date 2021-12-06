@@ -1,9 +1,9 @@
-#include "nginx-ip-address.h"
+#include "system-ip-address.h"
 #include <iostream>
 #include <fstream>
 #include <string>
 
-std::string getIpAddress()
+std::string SystemIpAddress()
 {
     char temp;
     char ipAddress[32] = {'\0'};

@@ -14,7 +14,8 @@
 
 //My header files for functions...
 #include "nginx-process-id.h"
-#include "ngnix-ip-address.h"
+#include "system-ip-address.h"
+#include "system-memory.h"
 
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
 #define CTRLD 	4
@@ -65,9 +66,7 @@ void checkProcess(WINDOW *my_menu_win);
 float get_cpu_usage();
 float get_network_usage_transmit();
 float get_network_usage_receive();
-float get_memory_usage();
 string get_PID_ngnix();
-string getIpAddress();
 string get_ingest_server( string choice, string streamService );
 string get_streamKey( string str );
 
@@ -79,7 +78,7 @@ int main()
     WINDOW *my_menu_win;
     int n_choices, i;
     bool loop = true;
-    ip_Address = getIpAddress();
+    ip_Address = SystemIpAddress();
 
 	/* Initialize curses */
 	initscr();
@@ -161,34 +160,6 @@ int main()
 	exit( EXIT_SUCCESS );
 }
 
-string getIpAddress()
-{
-    char buffer[15] = {'\0'};
-    char ipAddress[15] = {'\0'};
-    string temp = "";
-    shared_ptr<FILE> pipe(popen("hostname -I","r"), pclose);
-    if (!pipe) throw runtime_error("popen() failed!");
-
-    int i = 0;
-  while (!feof(pipe.get()))
-  {
-      buffer[i++] = fgetc(pipe.get());
-  }
-  //buffer[14] = '+';
-
-  for( int i = 0; i < 15; i++)
-  {
-      if( buffer[i] == '1' || buffer[i] == '2' || buffer[i] == '3' || buffer[i] == '4' || buffer[i] == '5' || buffer[i] == '6' || buffer[i] == '7' || buffer[i] == '8' || buffer[i] == '9' || buffer[i] == '.' )
-      {
-          ipAddress[i] = buffer[i];
-      }
-
-  }
-
-
-  return ipAddress;
-}
-
 void draw_menu( WINDOW *my_menu_win, MENU *my_menu )
 {
     /* Print a border around the main window and print a title */
@@ -238,11 +209,11 @@ void draw_menu( WINDOW *my_menu_win, MENU *my_menu )
     mvwprintw( my_menu_win, 15, 17, "|" );
     wattroff( my_menu_win, COLOR_PAIR(5));
 
-    if( nginxPID() == false )
+    if( NginxPid() == false )
     {
         mvwprintw( my_menu_win, 3, 17, " OFF    " );
     }
-	else if( nginxPID() == true )
+	else if( NginxPid() == true )
 	{
         mvwprintw( my_menu_win, 3, 17, " ON    " );
 	}
@@ -275,7 +246,7 @@ bool currentOption( const char* input, WINDOW *my_menu_win, MENU *my_menu )
 {
 	if( strcmp( input, choices[0] ) == 0 )
 	{
-		if( nginxPID() == false )
+		if( NginxPid() == false )
 		{
 			system( "/usr/local/nginx/sbin/./nginx" );
 			mvwprintw( my_menu_win, 3, 17, " ON                 " );
@@ -284,7 +255,7 @@ bool currentOption( const char* input, WINDOW *my_menu_win, MENU *my_menu )
 	else if( strcmp( input, choices[1] ) == 0 )
 	{
 
-		if( nginxPID() == true )
+		if( NginxPid() == true )
 		{
 			system( "/usr/local/nginx/sbin/./nginx -s stop" );
 			mvwprintw( my_menu_win, 3, 17, " OFF                " );
@@ -294,10 +265,9 @@ bool currentOption( const char* input, WINDOW *my_menu_win, MENU *my_menu )
 	}
 	else if( strcmp( input, choices[2] ) == 0 )
 	{
-		if( nginxPID() == true )
+		if( NginxPid() == true )
 		{
-			system( "./nginx -s stop" );
-			system( "./nginx" );
+      system( "/usr/local/nginx/sbin/./nginx -s reload" );
 			mvwprintw( my_menu_win, 3, 17, " ON - CONF Reloaded" );
 		}
 	}
@@ -331,7 +301,7 @@ bool currentOption( const char* input, WINDOW *my_menu_win, MENU *my_menu )
 	}
 	else if( strcmp( input, choices[10] ) == 0 )
 	{
-		if( nginxPID() == true )
+		if( NginxPid() == true )
 		{
 			system( "./nginx -s stop" );
 		}
@@ -344,19 +314,19 @@ void checkProcess(WINDOW *my_menu_win)
 {
      //get_PID_ngnix(my_menu_win);
 
-     if( nginxPID() == false )
+     if( NginxPid() == false )
      {
          mvwprintw( my_menu_win, 3, 17, " OFF                " );
      }
 
     mvwprintw( my_menu_win, 5, 38, "| PID:       %s", get_PID_ngnix().c_str() );
     mvwprintw( my_menu_win, 6, 38, "| CPU:     %8.3f %%", get_cpu_usage() );
-    mvwprintw( my_menu_win, 7, 38, "| MEM:     %8.3f GB", get_memory_usage() );
+    mvwprintw( my_menu_win, 7, 38, "| MEM:     %8.3f GB", MemoryUsage() );
     mvwprintw( my_menu_win, 8, 38, "| NET/T:   %8.3f", get_network_usage_transmit() );
     mvwprintw( my_menu_win, 8, 57, " Kbps" );
     mvwprintw( my_menu_win, 9, 38, "| NET/R:   %8.3f", get_network_usage_receive() );
     mvwprintw( my_menu_win, 9, 57, " Kbps" );
-    mvwprintw( my_menu_win, 10, 38, "| L-IP:    %s", ip_Address.c_str() );
+    mvwprintw( my_menu_win, 10, 38, "| L-IP:    %s", SystemIpAddress().c_str() );
 }
 
 void printSettings( WINDOW *my_menu_win )
@@ -1179,7 +1149,7 @@ float get_network_usage_transmit()
     for(string str; proc_net >> str; network.push_back(str));
     stringstream sstream(network[46]);
     sstream >> current_network;
-    final_network = ((float)(current_network - previous_network_data_transmit)/1000) * 0.98;
+    final_network = ((float)(current_network - previous_network_data_transmit)/1000) * 1.00;
     previous_network_data_transmit = current_network;
 
     return final_network;
@@ -1195,7 +1165,7 @@ float get_network_usage_receive()
     for(string str; proc_net >> str; network.push_back(str));
     stringstream sstream(network[38]);
     sstream >> current_network;
-    final_network = ((float)(current_network - previous_network_data_receive)/1000) * 0.98;
+    final_network = ((float)(current_network - previous_network_data_receive)/1000) * 1.00;
     previous_network_data_receive = current_network;
 
     return final_network;
@@ -1216,24 +1186,6 @@ float get_cpu_usage()
     previous_total_time = total_time;
 
     return utilization;
-}
-
-float get_memory_usage()
-{
-    vector<string> memory;
-    string str;
-    ifstream proc_mem("/proc/meminfo");
-    for( string str; proc_mem >> str; memory.push_back(str));
-    size_t memTotal;
-    size_t memAvailable;
-    float memUsed;
-    stringstream sstream(memory[1]);
-    stringstream ssstream(memory[7]);
-    sstream >> memTotal;
-    ssstream >> memAvailable;
-    memUsed = ((float)(memTotal - memAvailable)) / 1000000;
-    return memUsed;
-
 }
 
 string get_PID_ngnix()

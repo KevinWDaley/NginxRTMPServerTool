@@ -1,10 +1,10 @@
-#include "ngnix-memory.h"
+#include "system-memory.h"
 #include <vector>
 #include <fstream>
 #include <string>
 #include <sstream>
 
-float memoryUsage()
+float MemoryUsage()
 {
 
     std::vector<std::string> memory;
@@ -20,7 +20,5 @@ float memoryUsage()
     ssstream >> memAvailable;
     memUsed = ((float)(memTotal - memAvailable)) / 1000000;
     return memUsed;
-
-    return 0;
 
 }
