@@ -1,5 +1,6 @@
 Change log: 12/06/2021
      +New online network storage environment.
+     +Desync still an issue. 
 Change log: 4/30/2021
      +Minor fixes to original code.
 Change log: 4/22/2020
