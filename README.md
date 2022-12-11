@@ -21,7 +21,7 @@ adjust the server quality settings the more taxing the process will be on your p
      3. *GCC*
 
 # Installation Guide
-Coming Soon.....
+Coming Soon......
 
 # TO-DOs
 - [ ] Finish writing System Requirements.
